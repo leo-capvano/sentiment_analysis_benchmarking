@@ -1,11 +1,4 @@
-import argparse
-
 import pandas as pd
-
-from sentiment_finder import extract_sentiment
-
-p = argparse.ArgumentParser()
-p.add_argument("-dataset_src", type=str, help="the source directory containing all the imdb statement files")
 
 
 def get_expected_sentiment_from_row(row):
@@ -15,7 +8,7 @@ def get_expected_sentiment_from_row(row):
     return expected_sentiment
 
 
-def execute_sentiment140_dataset(base_path: str):
+def sentiment140_reader_execute(base_path: str, sentiment_core_matcher):
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", None)
 
@@ -23,10 +16,7 @@ def execute_sentiment140_dataset(base_path: str):
     hits, analyzed_rows = 0, 0
     dataframe = pd.read_csv(base_path, encoding="latin-1")
     for index, row in dataframe.iterrows():
-        hits += extract_sentiment(row[5], 0.5, pos_neg_neu, get_expected_sentiment_from_row(row))
+        hits += sentiment_core_matcher(row[5], 0.5, pos_neg_neu, get_expected_sentiment_from_row(row))
         analyzed_rows += 1
         print(f"positives {pos_neg_neu[0]} ### negatives {pos_neg_neu[1]} ### neutrals {pos_neg_neu[2]}")
     print(f"hits: {hits}, analyzed rows: {analyzed_rows}")
-
-
-execute_sentiment140_dataset(p.parse_args().dataset_src)
