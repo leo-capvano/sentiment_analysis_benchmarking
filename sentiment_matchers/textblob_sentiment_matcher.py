@@ -2,8 +2,10 @@ from typing import Optional
 
 from textblob import TextBlob
 
+score_threshold = 0.05
 
-def textblob_extract_sentiment(to_be_computed: str, score_threshold: float, sentiment_counter: [],
+
+def textblob_extract_sentiment(to_be_computed: str, sentiment_counter: [],
                                expected_sentiment: str) -> Optional[int]:
     blob = TextBlob(to_be_computed)
     compound_score = blob.sentiment.polarity
