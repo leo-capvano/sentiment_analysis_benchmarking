@@ -21,13 +21,10 @@ def vader_extract_sentiment(to_be_computed: str, sentiment_counter: [],
 
     if computed_sentiment == "positive":
         sentiment_counter[0] += 1
-        # print(f"{to_be_computed} -> positive")
     if computed_sentiment == "negative":
         sentiment_counter[1] += 1
-        # print(f"{to_be_computed} -> negative")
     if computed_sentiment == "neutral":
         sentiment_counter[2] += 1
-        # print(f"{to_be_computed} -> neutral")
 
     if computed_sentiment == expected_sentiment:
         return 1
