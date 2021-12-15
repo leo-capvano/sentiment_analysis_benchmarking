@@ -3,7 +3,7 @@ from typing import Optional
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 
-credential = AzureKeyCredential("da9522b7200d4ef78c5f056cdddc1add")
+credential = AzureKeyCredential("")
 text_analytics_client = TextAnalyticsClient(endpoint="https://text-language-engine.cognitiveservices.azure.com/",
                                             credential=credential)
 
