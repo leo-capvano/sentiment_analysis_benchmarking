@@ -19,4 +19,5 @@ def sentiment140_reader_execute(base_path: str, sentiment_core_matcher):
         hits += sentiment_core_matcher(row[5], pos_neg_neu, get_expected_sentiment_from_row(row))
         analyzed_rows += 1
         print(f"positives {pos_neg_neu[0]} ### negatives {pos_neg_neu[1]} ### neutrals {pos_neg_neu[2]}")
+        print(f"accuracy % {(hits / analyzed_rows) * 100} ")
     print(f"hits: {hits}, analyzed rows: {analyzed_rows}")

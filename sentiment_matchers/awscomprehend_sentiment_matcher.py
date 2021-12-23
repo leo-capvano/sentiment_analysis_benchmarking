@@ -6,7 +6,7 @@ import boto3
 def awscomprehend_extract_sentiment(to_be_computed: str, sentiment_counter: [],
                                     expected_sentiment: str) -> Optional[int]:
     client = boto3.client("comprehend", region_name="us-east-2")
-    resp = client.detect_sentiment(Text=to_be_computed, LanguageCode="it")
+    resp = client.detect_sentiment(Text=to_be_computed, LanguageCode="en")
     computed_sentiment = resp["Sentiment"].lower()
 
     if computed_sentiment == "positive":

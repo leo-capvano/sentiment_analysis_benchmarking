@@ -8,20 +8,14 @@ from sentiment_matchers.azure_sentiment_matcher import azure_extract_sentiment
 from sentiment_matchers.textblob_sentiment_matcher import textblob_extract_sentiment
 from sentiment_matchers.vader_sentiment_matcher import vader_extract_sentiment
 
-IMDB_POSITIVE_DATASET_PATH = "resources\\imdb_dataset\\test\\pos"
-
-IMDB_NEGATIVE_DATASET_PATH = "resources\\imdb_dataset\\test\\neg"
-
-TWITTER_DATASET_PATH = "resources\\tweeter_dataset.csv"
-
+IMDB_DATASET_PATH = "resources\\imdb_dataset.csv"
+TWITTER_DATASET_PATH = "resources/twitter_dataset.csv"
 SENTIMENT140_DATASET_PATH = "resources\\sentiment140_dataset.csv"
 
 p = argparse.ArgumentParser()
-p.add_argument("-expected_sentiment", type=str, help="the expected sentiment")
 p.add_argument("-dataset", type=str, help="the dataset reader to use",
-               choices=["imdb-pos", "imdb-neg", "twitter", "sentiment140"])
+               choices=["imdb", "twitter", "sentiment140"])
 p.add_argument("-tool", type=str, help="the sentiment analysis to use", choices=["vader", "textblob", "aws", "azure"])
-
 args = p.parse_args()
 
 
@@ -39,10 +33,8 @@ def get_sentiment_matcher(tool):
         exit(0)
 
 
-if args.dataset == "imdb-pos":
-    imdb_reader_execute(IMDB_POSITIVE_DATASET_PATH, args.expected_sentiment, get_sentiment_matcher(args.tool))
-elif args.dataset == "imdb-neg":
-    imdb_reader_execute(IMDB_NEGATIVE_DATASET_PATH, args.expected_sentiment, get_sentiment_matcher(args.tool))
+if args.dataset == "imdb":
+    imdb_reader_execute(IMDB_DATASET_PATH, get_sentiment_matcher(args.tool))
 elif args.dataset == "twitter":
     twitter_reader_execute(TWITTER_DATASET_PATH, get_sentiment_matcher(args.tool))
 elif args.dataset == "sentiment140":
@@ -50,3 +42,6 @@ elif args.dataset == "sentiment140":
 else:
     print("the selected dataset is not supported")
     exit(0)
+
+# if __name__ == '__main__':
+#     imdb_reader_execute(IMDB_POSITIVE_DATASET_PATH, POSITIVE_SENTIMENT, get_sentiment_matcher("azure"))

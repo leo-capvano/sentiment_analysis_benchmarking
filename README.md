@@ -40,8 +40,7 @@ specific dataset and a specific sentiment analysis tool. The entrypoint will the
 
 **-dataset**: allow you to select one of the supported dataset to execute the benchmark. The possibile values are:
 
-- _-imdb-pos_: to select all the positive sentences of the imdb dataset
-- _-imdb-neg_: to select all the negative sentences of the imdb dataset
+- _-imdb_: to select the imdb dataset
 - _-twitter_: to select the twitter dataset
 - _-sentiment140_: to select the sentiment140 dataset
 
@@ -70,4 +69,26 @@ positives 739 ### negatives 574 ### neutrals 1040
 positives 739 ### negatives 574 ### neutrals 1041
 positives 739 ### negatives 574 ### neutrals 1041
 hits: 523, analyzed rows: 2470
+```
+
+# Usage Examples
+To run a benchmark of the **vader** tool given **imdb sentences dataset** as input:
+```
+python .\make_benchmark.py -dataset imdb -tool vader
+```
+To run a benchmark of the **textblob** tool given **imdb sentences dataset** as input:
+```
+python .\make_benchmark.py -dataset imdb -tool textblob
+```
+To run a benchmark of the **textblob** tool given **sentiment140 dataset** as input:
+```
+python .\make_benchmark.py -dataset sentiment140 -tool textblob
+```
+To run a benchmark of the **aws** tool given **sentiment140 dataset** as input:
+```
+python .\make_benchmark.py -dataset sentiment140 -tool aws
+```
+To run a benchmark of the **azure** tool given **twitter dataset** as input:
+```
+python .\make_benchmark.py -dataset twitter -tool azure
 ```
