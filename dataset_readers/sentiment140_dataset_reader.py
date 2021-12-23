@@ -2,10 +2,12 @@ import pandas as pd
 
 
 def get_expected_sentiment_from_row(row):
-    expected_sentiment = "negative" if row[0] == 0 else None
-    expected_sentiment = "neutral" if row[0] == 2 else None
-    expected_sentiment = "positive" if row[0] == 4 else None
-    return expected_sentiment
+    if row[0] == 0:
+        return "negative"
+    elif row[0] == 2:
+        return "neutral"
+    elif row[0] == 4:
+        return "positive"
 
 
 def sentiment140_reader_execute(base_path: str, sentiment_core_matcher):
