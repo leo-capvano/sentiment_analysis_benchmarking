@@ -6,7 +6,7 @@ def imdb_reader_execute(base_path: str, sentiment_core_matcher):
     hits, analyzed_rows = 0, 0
     dataframe = pd.read_csv(base_path, encoding="latin-1")
     for index, row in dataframe.iterrows():
-        if len(row[1]) < 5000:
+        if len(row[0]) < 5000:
             hits += sentiment_core_matcher(row[0], pos_neg_neu, row[1])
             analyzed_rows += 1
         print(f"positives {pos_neg_neu[0]} ### negatives {pos_neg_neu[1]} ### neutrals {pos_neg_neu[2]}")
