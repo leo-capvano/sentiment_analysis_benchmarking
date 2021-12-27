@@ -9,7 +9,7 @@ from sentiment_matchers.textblob_sentiment_matcher import textblob_extract_senti
 from sentiment_matchers.vader_sentiment_matcher import vader_extract_sentiment
 
 IMDB_DATASET_PATH = "resources\\imdb_dataset.csv"
-TWITTER_DATASET_PATH = "resources/twitter_dataset.csv"
+TWITTER_DATASET_PATH = "resources\\twitter_dataset.csv"
 SENTIMENT140_DATASET_PATH = "resources\\sentiment140_dataset.csv"
 
 p = argparse.ArgumentParser()
@@ -42,6 +42,3 @@ elif args.dataset == "sentiment140":
 else:
     print("the selected dataset is not supported")
     exit(0)
-
-# if __name__ == '__main__':
-#     imdb_reader_execute(IMDB_POSITIVE_DATASET_PATH, POSITIVE_SENTIMENT, get_sentiment_matcher("azure"))

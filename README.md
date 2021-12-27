@@ -92,3 +92,29 @@ To run a benchmark of the **azure** tool given **twitter dataset** as input:
 ```
 python .\make_benchmark.py -dataset twitter -tool azure
 ```
+
+## How to configure credential for AWS and Azure services
+### AWS
+1. Create _.aws_ folder under C:/Users/_user_/
+2. Create the file .aws/credentials
+3. The credentials file will contain:
+```
+[default]
+aws_access_key_id = ...
+aws_secret_access_key = ...
+```
+4. the AWS comprehend client automatically reads the credentials file to open the connection
+
+### Azure
+The azure_sentiment_matcher.py module reads the Azure endpoint key from an environment
+variable called _AZURE_KEY_, so:
+1. Get the endpoint key from the Azure resource manager portal
+2. Create the _AZURE_KEY_ environment variable and assign it the key value
+3. You are ready to run the azure_sentiment_matcher.py
+```
+[default]
+aws_access_key_id = ...
+aws_secret_access_key = ...
+```
+
+

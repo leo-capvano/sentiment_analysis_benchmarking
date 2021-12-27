@@ -6,7 +6,7 @@ from azure.core.credentials import AzureKeyCredential
 from dataset_readers.imdb_dataset_reader import imdb_reader_execute
 
 key = str(os.environ.get("AZURE_KEY"))
-credential = AzureKeyCredential("")  # TODO remove
+credential = AzureKeyCredential(key)
 text_analytics_client = TextAnalyticsClient(
     endpoint="https://text-language-engine-resource.cognitiveservices.azure.com/",
     credential=credential)
