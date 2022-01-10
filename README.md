@@ -111,10 +111,5 @@ variable called _AZURE_KEY_, so:
 1. Get the endpoint key from the Azure resource manager portal
 2. Create the _AZURE_KEY_ environment variable and assign it the key value
 3. You are ready to run the azure_sentiment_matcher.py
-```
-[default]
-aws_access_key_id = ...
-aws_secret_access_key = ...
-```
 
 
